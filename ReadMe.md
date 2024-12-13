@@ -1,4 +1,4 @@
-# Quiz App
+# Quiz Application
 
 ## Description
 A simple Quiz Application built using Spring Boot with an H2 Database for data persistence. The app allows users to:
@@ -13,204 +13,151 @@ The app is seeded with sample questions and a default user for testing purposes.
 ---
 
 ## Features
-### Key Features
-- Start a new Quiz Session.
-- Get a random multiple choice question from a set of questions in database
-- Submit answer
-- Get the total questions answered by user with details on correct and incorrect submission.
 
+### Key Features
+- **Start a new Quiz Session:** Users can initiate a quiz session.
+- **Get Random Multiple Choice Questions:** Fetch a question from the database, randomized and non-redundant.
+- **Submit Answers:** Users can answer questions and submit them.
+- **Retrieve Results:** View the total questions answered along with details on correct and incorrect submissions.
 
 ### Additional Features
-1. **Multiple User Support:**  
-   The application supports multiple users accessing the quiz app simultaneously. Each user's progress is tracked individually.
-
-2. **Unique Questions Per User Session:**  
-   Questions answered by the user in a session are not repeated, ensuring a seamless and non-redundant experience.
-
-3. **Category-Based Question Fetching:**  
-   Users can filter questions based on specific categories (e.g., Java, Python). If no category is specified, questions are fetched randomly from all available categories.
-
-4. **Dynamic Reset of Progress:**  
-   Starting a new quiz session automatically resets the user's progress, ensuring a fresh start each time.
-5. **User Stats Tracking:**
-
-   Users can view their performance stats (total questions answered, correct answers, incorrect answers) at any point during the session.
-
-6. **DTO Usage for Scalability:**
-
-   The application utilizes Data Transfer Objects (DTOs) to enhance future scalability and maintain high performance.
-
+- **Multiple User Support:** Each user's progress is tracked individually, allowing simultaneous access.
+- **Unique Questions Per User Session:** Ensures no repetition of questions within a session.
+- **Category-Based Question Fetching:** Filter questions by categories like "Java" or "Python." Defaults to random selection from all categories if none is specified.
+- **User Stats Tracking:** View performance stats (e.g., total answered, correct answers) during the session.
+- **DTO Usage for Scalability:** Leveraging Data Transfer Objects for improved scalability and performance.
 
 ---
 
 ## Assumptions
-1. The H2 Database is used for simplicity, and the schema is automatically created based on the application.
-2. The application assumes that each API is tested using the `username` provided in the query parameters.
-3. Questions are categorized by "Java" and "Python" in database with Case Sensitivity. 
-4. If no category is passed while Fetching the Question, it will fetch from both Category.
-5. While submitting the answer, it is assumed that option number will be passed instead of any other value.
-6. User can fetch another question without submitting previous one.
+
+- **H2 Database:** The schema is auto-generated for simplicity.
+- **API Usage:** Each API assumes the username is passed as a query parameter.
+- **Categories:** Questions are categorized by "Java" and "Python," case-sensitive.
+- **Answer Submission:** Option numbers are passed while submitting answers.
+- **Non-Sequential Question Fetching:** Users can fetch a new question without answering the previous one.
+- **Session Reset:** Starting a new quiz session resets the user's progress.
 
 ---
 
 ## Prerequisites
-1. Java 17+
-2. Maven (for dependencies)
-3. Postman (for API testing)
+
+- **Java 17+**
+- **Maven (for dependencies)**
+- **Postman (for API testing)**
 
 ---
 
 ## Setup Instructions
 
-1. **Clone the Repository:**
-   ```bash
-   git clone <https://github.com/heyMadhur/QuizApp-Conceptile-Assignment.git>
-   cd <repository-folder>
-   ```
+### Clone the Repository
+```bash
+git clone https://github.com/heyMadhur/QuizApp-Conceptile-Assignment.git
+cd QuizApp-Conceptile-Assignment
+```
 
-2. **Build the Application:**
-   ```bash
-   mvn clean install
-   ```
+### Build the Application
+```bash
+mvn clean install
+```
 
-3. **Run the Application:**
-   ```bash
-   mvn spring-boot:run
-   ```
+### Run the Application
+```bash
+mvn spring-boot:run
+```
 
-4. **Access H2 Database Console (Optional):**
-   Open `http://localhost:8080/h2-console` in your browser. Use the following credentials:
-    - JDBC URL: `jdbc:h2:file:./data/QuizApp`
-    - Username: `madhurgupta`
-    - Password: 12345
+### Access H2 Database Console (Optional)
+- Open [http://localhost:8080/h2-console](http://localhost:8080/h2-console).
+- Credentials:
+   - **JDBC URL:** jdbc:h2:file:./data/QuizApp
+   - **Username:** madhurgupta
+   - **Password:** 12345
 
-5. **Test APIs using Postman:**
-   Use the Postman collection provided below to test the APIs.
+### Test APIs using Postman
+Use the Postman collection linked below to test the APIs.
 
 ---
 
 ## API Documentation
 
 ### 1. Start Quiz
-**Endpoint:** `POST /api/quiz/start?username={username}`
-
-**Description:** Starts a quiz for the given user.
-
-**Example Request:**
-```bash
-POST http://localhost:8080/api/quiz/start?username=Madhur
-```
-
-**Example Response:**
+- **Description:** Initiates a quiz session for the user.
+- **Endpoint:** `POST /api/quiz/start`
+- **Query Parameter:** `username`
+- **Sample Response:**
 ```json
 {
-  "message": "Welcome Back Madhur",
-  "user": {
-    "id": 1,
-    "username": "Madhur",
-    "totalQuestionsAnswered": 0,
-    "correctAnswers": 0,
-    "incorrectAnswers": 0
-  }
+    "message": "Welcome Back Madhur",
+    "user": {
+        "id": 1,
+        "username": "Madhur",
+        "totalQuestionsAnswered": 0,
+        "correctAnswers": 0,
+        "incorrectAnswers": 0
+    }
 }
 ```
-
----
 
 ### 2. Get Question
-**Endpoint:** `GET /api/quiz/get-question?username={username}&category={category}`
-
-**Description:** Fetches a question from the given category.
-
-**Example Request:**
-```bash
-GET http://localhost:8080/api/quiz/get-question?username=Madhur&category=Python
-```
-
-**Example Response:**
+- **Description:** Fetches a question for the user, optionally filtered by category.
+- **Endpoint:** `GET /api/quiz/get-question`
+- **Query Parameters:** `username`, `category` (optional)
+- **Sample Response:**
 ```json
 {
-  "id": 16,
-  "questionTitle": "Which Python module is used for working with dates and times?",
-  "option1": "datetime",
-  "option2": "math",
-  "option3": "os",
-  "option4": "sys"
+    "id": 12,
+    "questionTitle": "What is the output of the following Python code snippet? \n\nx = [1, 2, 3]\nx.append(4)\nprint(x)",
+    "option1": "[1, 2, 3]",
+    "option2": "[1, 2, 3, 4]",
+    "option3": "[4, 3, 2, 1]",
+    "option4": "Error"
 }
 ```
-
----
 
 ### 3. Submit Answer
-**Endpoint:** `POST /api/quiz/submit?username={username}`
-
-**Description:** Submits an answer for the given question.
-
-**Example Request:**
-```bash
-POST http://localhost:8080/api/quiz/submit?username=Madhur
-Content-Type: application/json
-{
-  "quesId": 16,
-  "answer": 1
-}
-```
-
-**Example Response:**
+- **Description:** Submits an answer for a given question.
+- **Endpoint:** `POST /api/quiz/submit`
+- **Query Parameter:** `username`
+- **Body:**
 ```json
 {
-  "message": "Answer Submitted Successfully",
-  "totalQuestionAnswered": 1
+    "quesId": 12,
+    "answer": 2
 }
 ```
-
----
 
 ### 4. Get Result
-**Endpoint:** `GET /api/quiz/get-result?username={username}`
+- **Description:** Retrieves the user's quiz results.
+- **Endpoint:** `GET /api/quiz/get-result`
+- **Query Parameter:** `username`
 
-**Description:** Retrieves the quiz result for the given user.
-
-**Example Request:**
-```bash
-GET http://localhost:8080/api/quiz/get-result?username=Madhur
-```
-
-**Example Response:**
-```json
-{
-  "username": "Madhur",
-  "totalQuestionsAnswered": 10,
-  "correctAnswers": 8,
-  "incorrectAnswers": 2
-}
-```
+### 5. Get Stats
+- **Description:** Provides user performance statistics.
+- **Endpoint:** `GET /api/quiz/get-stats`
+- **Query Parameter:** `username`
 
 ---
 
 ## Postman Collection
 Import the following collection into Postman to test the APIs:
-
-```json
-{
-  "info": {
-    "_postman_id": "be127b8d-372b-453e-a950-bf76f9bd6903",
-    "name": "Conceptile Assignment QuizApp",
-    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
-  },
-  "item": [ ... ]
-}
-```
+[Conceptile Assignment QuizApp Postman Collection](https://github.com/heyMadhur/QuizApp-Conceptile-Assignment/blob/main/Conceptile%20Assignment%20QuizApp.postman_collection.json)
 
 ---
 
 ## Troubleshooting
 
-1. If the application fails to start, ensure all dependencies are installed properly.
+1. Ensure all dependencies are installed correctly if the application fails to start.
 2. Verify the H2 database configuration matches the default settings.
-3. Check if the application is running on `localhost:8080`.
+3. Check if the application is running on [localhost:8080](http://localhost:8080).
 
 ---
 
 ## License
 This project is licensed under the MIT License.
+
+---
+
+## Developer
+**Madhur Gupta**
+- **LinkedIn:** [Madhur Gupta](https://www.linkedin.com/in/madhur-gupta-8a9816221/)
+- **Email:** [madhurgupta12112002@gmail.com](mailto:madhurgupta12112002@gmail.com)
