@@ -45,18 +45,17 @@ The app is seeded with sample questions and a default user for testing purposes.
 
 ## Assumptions
 1. The H2 Database is used for simplicity, and the schema is automatically created based on the application.
-2. A default user (`Madhur`) is pre-seeded in the database while Testing. You can create new User while starting the quiz.
-3. The application assumes that each API is tested using the `username` provided in the query parameters.
-4. Questions are categorized by "Java" and "Python" in database with Case Sensitivity. 
-5. If no category is passed while Fetching the Question, it will fetch from both Category.
-6. While submitting the answer, it is assumed that option number will be passed instead of any other value.
-7. Everytime the User starts a new Quiz, his previous data will be reset.
+2. The application assumes that each API is tested using the `username` provided in the query parameters.
+3. Questions are categorized by "Java" and "Python" in database with Case Sensitivity. 
+4. If no category is passed while Fetching the Question, it will fetch from both Category.
+5. While submitting the answer, it is assumed that option number will be passed instead of any other value.
+6. User can fetch another question without submitting previous one.
 
 ---
 
 ## Prerequisites
 1. Java 17+
-2. Maven or Gradle (for dependencies)
+2. Maven (for dependencies)
 3. Postman (for API testing)
 
 ---
@@ -65,7 +64,7 @@ The app is seeded with sample questions and a default user for testing purposes.
 
 1. **Clone the Repository:**
    ```bash
-   git clone <repository-url>
+   git clone <https://github.com/heyMadhur/QuizApp-Conceptile-Assignment.git>
    cd <repository-folder>
    ```
 

@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -101,12 +102,15 @@ public class QuizController {
             return new ResponseEntity<>("User not found. Start a new Quiz and register user.", HttpStatus.NOT_FOUND);
         }
 
+        UserStatsDTO userStats= (UserStatsDTO) getStats(username).getBody();
+
+
 //        1st Way to send Response by HashMap
-        HashMap<String, Object> finalResponse= new HashMap<>();
-        finalResponse.put("username", user.getUsername());
-        finalResponse.put("Score", user.getCorrectAnswers());
-        finalResponse.put("Total Marks", user.getAnsweredQuestions().size());
-        finalResponse.put("message", "To view your Stats, Kindly hit /api/quiz/stats");
+        LinkedHashMap<String, Object> finalResponse= new LinkedHashMap<>();
+//        finalResponse.put("username", user.getUsername());
+//        finalResponse.put("Total Marks", user.getAnsweredQuestions().size());
+        finalResponse.put("Score", user.getCorrectAnswers()+"/"+user.getAnsweredQuestions().size());
+        finalResponse.put("Stats", userStats);
 
         return new ResponseEntity<>(finalResponse, HttpStatus.OK);
 
