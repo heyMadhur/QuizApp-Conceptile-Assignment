@@ -12,6 +12,37 @@ The app is seeded with sample questions and a default user for testing purposes.
 
 ---
 
+## Features
+### Key Features
+- Start a new Quiz Session.
+- Get a random multiple choice question from a set of questions in database
+- Submit answer
+- Get the total questions answered by user with details on correct and incorrect submission.
+
+
+### Additional Features
+1. **Multiple User Support:**  
+   The application supports multiple users accessing the quiz app simultaneously. Each user's progress is tracked individually.
+
+2. **Unique Questions Per User Session:**  
+   Questions answered by the user in a session are not repeated, ensuring a seamless and non-redundant experience.
+
+3. **Category-Based Question Fetching:**  
+   Users can filter questions based on specific categories (e.g., Java, Python). If no category is specified, questions are fetched randomly from all available categories.
+
+4. **Dynamic Reset of Progress:**  
+   Starting a new quiz session automatically resets the user's progress, ensuring a fresh start each time.
+5. **User Stats Tracking:**
+
+   Users can view their performance stats (total questions answered, correct answers, incorrect answers) at any point during the session.
+
+6. **DTO Usage for Scalability:**
+
+   The application utilizes Data Transfer Objects (DTOs) to enhance future scalability and maintain high performance.
+
+
+---
+
 ## Assumptions
 1. The H2 Database is used for simplicity, and the schema is automatically created based on the application.
 2. A default user (`Madhur`) is pre-seeded in the database while Testing. You can create new User while starting the quiz.
