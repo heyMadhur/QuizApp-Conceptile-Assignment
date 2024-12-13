@@ -1,0 +1,389 @@
+{
+	"info": {
+		"_postman_id": "be127b8d-372b-453e-a950-bf76f9bd6903",
+		"name": "Conceptile Assignment QuizApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "37669827"
+	},
+	"item": [
+		{
+			"name": "Start Quiz",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/api/quiz/start?username=Madhur",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api",
+						"quiz",
+						"start"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "Madhur"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Start Quiz",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/api/quiz/start?username=Madhur",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"quiz",
+								"start"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "Madhur"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 13 Dec 2024 09:51:24 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Welcome Back Madhur\",\n    \"user\": {\n        \"id\": 1,\n        \"username\": \"Madhur\",\n        \"totalQuestionsAnswered\": 0,\n        \"correctAnswers\": 0,\n        \"incorrectAnswers\": 0\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Question",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/api/quiz/get-question?username=Madhur&category=Python",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api",
+						"quiz",
+						"get-question"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "Madhur"
+						},
+						{
+							"key": "category",
+							"value": "Python"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Question",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/api/quiz/get-question?username=Madhur&category=Python",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"quiz",
+								"get-question"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "Madhur"
+								},
+								{
+									"key": "category",
+									"value": "Python"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 13 Dec 2024 09:52:28 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 12,\n    \"questionTitle\": \"What is the output of the following Python code snippet? \\\\nx = [1, 2, 3] \\\\nx.append(4) \\\\nprint(x)\",\n    \"option1\": \"[1, 2, 3]\",\n    \"option2\": \"[1, 2, 3, 4]\",\n    \"option3\": \"[4, 3, 2, 1]\",\n    \"option4\": \"Error\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Submit Answer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quesId\": 12,\r\n    \"answer\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/api/quiz/submit?username=Madhur",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api",
+						"quiz",
+						"submit"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "Madhur"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Result",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/api/quiz/get-result?username=Madhur",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api",
+						"quiz",
+						"get-result"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "Madhur"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Result",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/api/quiz/get-result?username=Madhur",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"quiz",
+								"get-result"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "Madhur"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 13 Dec 2024 09:59:27 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"Score\": \"1/1\",\n    \"Stats\": {\n        \"username\": \"Madhur\",\n        \"totalAnswerQuestions\": 1,\n        \"correctAnswers\": 1,\n        \"incorrectAnswers\": 0,\n        \"actualAnswersForEachQuestion\": [\n            {\n                \"id\": 12,\n                \"questionTitle\": \"What is the output of the following Python code snippet? \\\\nx = [1, 2, 3] \\\\nx.append(4) \\\\nprint(x)\",\n                \"category\": \"Python\",\n                \"option1\": \"[1, 2, 3]\",\n                \"option2\": \"[1, 2, 3, 4]\",\n                \"option3\": \"[4, 3, 2, 1]\",\n                \"option4\": \"Error\",\n                \"rightAnswer\": 2\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Stats",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseurl}}/api/quiz/stats?username=Madhur",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"api",
+						"quiz",
+						"stats"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "Madhur"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Stats",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseurl}}/api/quiz/stats?username=Madhur",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"api",
+								"quiz",
+								"stats"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "Madhur"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 13 Dec 2024 11:40:12 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"username\": \"Madhur\",\n    \"totalAnswerQuestions\": 1,\n    \"correctAnswers\": 1,\n    \"incorrectAnswers\": 0,\n    \"actualAnswersForEachQuestion\": [\n        {\n            \"id\": 12,\n            \"questionTitle\": \"What is the output of the following Python code snippet? \\\\nx = [1, 2, 3] \\\\nx.append(4) \\\\nprint(x)\",\n            \"category\": \"Python\",\n            \"option1\": \"[1, 2, 3]\",\n            \"option2\": \"[1, 2, 3, 4]\",\n            \"option3\": \"[4, 3, 2, 1]\",\n            \"option4\": \"Error\",\n            \"rightAnswer\": 2\n        }\n    ]\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseurl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
