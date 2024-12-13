@@ -73,12 +73,11 @@ mvn spring-boot:run
    - **Username:** madhurgupta
    - **Password:** 12345
 
-### Test APIs using Postman
-Use the Postman collection linked below to test the APIs.
-
 ---
 
 ## API Documentation
+
+Base Url: http://localhost:8080/
 
 ### 1. Start Quiz
 - **Description:** Initiates a quiz session for the user.
